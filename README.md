@@ -1,2 +1,4 @@
-# theano-roi-pooling
-Theano port of Rob Girshick's ROI Pooling Layer
+ROIPooling Operation for Theano
+=======
+
+Theano port of Ross Girshick's ROI Pooling Layer
