@@ -38,8 +38,8 @@ class ROIPoolingOp(GpuOp, COp):
     rois_shape = T.shape(node.inputs[1])
     batch_size = rois_shape[0]
     num_maps = data_shape[1]
-    h = data_shape[2]
-    w = data_shape[3]
+    h = self.pooled_h
+    w = self.pooled_w
     out_shape = [batch_size, num_maps, h, w]
     return [out_shape, out_shape]
 
