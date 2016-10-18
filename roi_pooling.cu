@@ -185,7 +185,6 @@ int APPLY_SPECIFIC(Forward_gpu)(CudaNdarray* data,
                                 CudaNdarray* rois,
                                 CudaNdarray** out,
                                 CudaNdarray** argmaxes) {
-  int count = CudaNdarray_SIZE(data);
   int batch_size = CudaNdarray_DIMS(rois)[0];
   int channels = CudaNdarray_DIMS(data)[1];
   int height = CudaNdarray_DIMS(data)[2];
@@ -197,6 +196,9 @@ int APPLY_SPECIFIC(Forward_gpu)(CudaNdarray* data,
   dims[1] = channels;
   dims[2] = POOLED_HEIGHT;
   dims[3] = POOLED_WIDTH;
+
+  int count = batch_size * channels * POOLED_HEIGHT * POOLED_WIDTH;
+
   CudaNdarray_prep_output(out, 4, dims);
   CudaNdarray_prep_output(argmaxes, 4, dims);
 
